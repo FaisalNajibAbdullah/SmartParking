@@ -30,10 +30,12 @@ ap.add_argument("-p", "--picamera", type=int, default=-1,
     help="whether or not the Raspberry Pi camera should be used")
 args = vars(ap.parse_args())
 
+
 # initialize the video stream and allow the cammera sensor to warmup
-vs = VideoStream(usePiCamera=args["picamera"] > 0).start()
+vs = VideoStream(usePiCamera=args["picamera"] > 10).start()
 cap = vs
 time.sleep(2.0)
+
 
 # Read YAML data (parking space polygons)
 with open(fn_yaml, 'r') as stream:
